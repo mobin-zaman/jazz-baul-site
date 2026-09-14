@@ -79,7 +79,8 @@ html[data-theme="light"] .toggle .sun{display:inline}
 .menu a:active{transform:scale(0.97)}
 
 /* hero — full-bleed cinematic */
-.hero{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:calc(92vh - var(--nav-h));padding:0;overflow:hidden}
+.hero{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden;min-height:60vh;aspect-ratio:16/8.5;max-height:88vh}
+@media(max-width:720px){ .hero{min-height:78vw;aspect-ratio:16/10} }
 .hero-bg{position:absolute;inset:0;z-index:0;background:var(--shade)}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 28%;filter:grayscale(.12) sepia(.12) brightness(.9) contrast(1.05)}
 /* lighter scrim — keeps headline readable on the bottom-left while letting the photo show */
@@ -123,6 +124,9 @@ html[data-theme="light"] .toggle .sun{display:inline}
 .about-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
 .about-photo{margin:0}
 .about-photo img{width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--line);filter:sepia(.15) saturate(.9) contrast(1.02)}
+.about-photos{display:grid;grid-template-columns:1fr;gap:16px}
+.about-photo.small img{aspect-ratio:1/1;object-fit:cover}
+@media(min-width:720px){ .about-photos{grid-template-columns:auto auto;align-items:start} .about-photo.small{margin-top:48px} .about-photo.small img{max-width:260px} }
 .studio-bio p{color:var(--ink-dim);max-width:64ch;margin-bottom:22px;font-size:16px}
 .studio-bio p b{color:var(--ink)}
 .meta-list{list-style:none;border-top:1px solid var(--line)}
@@ -276,7 +280,10 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
     <div class="wrap">
       <div class="section-head reveal"><span class="eyebrow">The studio</span><h2>About</h2></div>
       <div class="about-grid">
-        <figure class="about-photo reveal"><img src="assets/studio-mic.jpg" alt="Inside the Jazz Baul Records studio" width="990" height="1344" loading="eager"></figure>
+        <div class="about-photos reveal">
+        <figure class="about-photo"><img src="assets/studio-mic.jpg" alt="Inside the Jazz Baul Records studio" width="990" height="1344" loading="eager"></figure>
+        <figure class="about-photo small"><img src="assets/studio-guitarist.jpg" alt="A guitarist recording session at Jazz Baul Records" width="720" height="720" loading="eager"></figure>
+      </div>
         <div>
         <div class="studio-bio reveal" style="transition-delay:60ms">
           <p><b>Jazz Baul Records</b> is an independent sound studio and audio production house in Dhaka, founded by <b>Akram Siddiquee</b>.</p>
