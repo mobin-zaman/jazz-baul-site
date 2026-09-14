@@ -88,6 +88,8 @@ html.js .hero-bg img{animation:jbKenBurns 2.4s var(--ease) both}
 .hero-title,.hero-sub,.kicker{overflow-wrap:anywhere}
 .cta-row{flex-wrap:wrap}
 .hero .kicker{color:var(--accent);margin-bottom:20px}
+/* hero logo: white full lockup, reads on the dark scrim; sized responsively */
+.hero-logo{height:clamp(96px,16vh,170px);width:auto;object-fit:contain;display:block;margin-bottom:22px;filter:drop-shadow(0 6px 24px var(--shade))}
 .hero-title{margin:0}
 .hero-sub{font-size:clamp(16px,2.4vw,21px);color:var(--ink-dim);margin-top:24px;max-width:46ch;line-height:1.55;margin-left:auto}
 @media(max-width:720px){ .hero-sub{margin-left:0} }
@@ -167,11 +169,12 @@ html.js .hero-bg img{animation:jbKenBurns 2.4s var(--ease) both}
 @media(min-width:720px){ .nav-links{display:flex}.burger{display:none}.svc-grid{grid-template-columns:repeat(3,1fr)}.disco-grid.two{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr 1.1fr;gap:72px}.about-photo{max-width:440px} }
 @media(max-width:719px){ .nav-links{display:none}.burger{display:flex} }
 @media(max-width:720px){
-  .hero-inner{align-items:flex-end;text-align:right}
-  .hero-sub{margin-left:auto}
+  .hero-inner{align-items:flex-start;text-align:left}
+  .hero-logo{height:88px;margin-bottom:20px}
+  .hero-sub{margin-left:0}
   .hero::after{background:linear-gradient(to top, var(--bg) 4%, rgba(15,11,7,.85) 40%, rgba(15,11,7,.3) 74%, transparent 94%)}
-  .hero-title{max-width:76%}
-  .hero-sub{max-width:76%}
+  .hero-title{max-width:100%}
+  .hero-sub{max-width:100%}
   .cta-row{max-width:100%}
 }
 @media(max-width:540px){ section{padding:76px 0}.hero-title{font-size:clamp(30px,11vw,48px)}.hero-inner{padding:80px 24px 64px}.hero-bg img{object-position:center 6%}.disco-grid.two{gap:24px}.vcard{background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.video-wrap{border-radius:6px}.cta-row .btn{flex:1 1 100%;justify-content:center}.contact-box{padding:26px}.svc{padding:26px 22px} }
@@ -215,6 +218,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
   <section class="hero" id="top">
     <div class="hero-bg" aria-hidden="true"><img src="assets/akram-hero.jpg" alt="" loading="eager"></div>
     <div class="hero-inner">
+      <img class="hero-logo reveal" src="assets/logo-nav.png" alt="Jazz Baul Records" width="725" height="1372" style="transition-delay:20ms">
       <p class="kicker reveal" style="transition-delay:40ms">Jazz Baul Records · Dhaka · Est. 2018</p>
       <h1 class="display hero-title reveal" style="transition-delay:80ms">A recording studio<br>for serious sound</h1>
       <p class="hero-sub reveal" style="transition-delay:140ms">Recording · Music Production · Sound Design · Mixing &amp; Mastering — for music, film, animation, games and brands.</p>
