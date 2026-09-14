@@ -53,8 +53,8 @@ section{padding:110px 0}
 /* nav */
 .nav{position:sticky;top:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 28px;max-width:1120px;margin:0 auto;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:12px}
-/* nav logo: crop to the horizontal 'JAZZ BAUL RECORDS' wordmark band so it's legible */
-.brand img{width:auto;height:44px;aspect-ratio:auto;object-fit:contain;object-position:left center;border-radius:4px;filter:sepia(.12) saturate(.8)}
+/* brand mark: the JB vinyl icon, white-on-transparent, sits cleanly on the dark nav (no white box) */
+.brand img{height:38px;width:auto;object-fit:contain;display:block}
 .brand-mark{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.08em;color:var(--ink)}
 .nav-links{display:flex;align-items:center;gap:30px;font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 .nav-links a{color:var(--ink-faint)}.nav-links a:hover{color:var(--ink)}
@@ -154,7 +154,10 @@ html.js .hero-bg img{animation:jbKenBurns 2.4s var(--ease) both}
 .back-link{font-size:13px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
 
 /* footer */
-.footer{border-top:1px solid var(--line);padding:48px 28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;max-width:1120px;margin:0 auto;font-size:12px;color:var(--ink-faint);letter-spacing:.06em}
+.footer{border-top:1px solid var(--line);padding:56px 28px 44px;display:flex;flex-direction:column;gap:28px;max-width:1120px;margin:0 auto;font-size:12px;color:var(--ink-faint);letter-spacing:.06em}
+.footer-brand{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-brand img{height:150px;width:auto;object-fit:contain;display:block}
+.footer-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 .footer .credit{color:var(--ink);font-weight:600}
 
 /* hover gated to fine pointers */
@@ -184,7 +187,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
 <body>
 
 <header class="nav">
-  <a class="brand" href="#top"><img src="assets/logo.jpg" alt="Jazz Baul Records"></a>
+  <a class="brand" href="#top"><img src="assets/logo-mark.png" alt="Jazz Baul Records" width="650" height="650"></a>
   <nav class="nav-links" aria-label="Primary">
     <a href="#services">Services</a>
     <a href="#process">Process</a>
@@ -340,9 +343,12 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
 </main>
 
 <footer class="footer">
-  <span>© <span id="yr"></span> Jazz Baul Records</span>
-  <span>Dhaka, Bangladesh</span>
-  <span>Made by <a class="credit" href="mailto:mobinzamandev@gmail.com">Mohetuzzaman Mobin</a></span>
+  <div class="footer-brand"><img src="assets/logo-nav.png" alt="Jazz Baul Records — main logo" width="725" height="1372"><a class="credit" href="#top">Back to top</a></div>
+  <div class="footer-row">
+    <span>© <span id="yr"></span> Jazz Baul Records</span>
+    <span>Dhaka, Bangladesh</span>
+    <span>Made by <a class="credit" href="mailto:mobinzamandev@gmail.com">Mohetuzzaman Mobin</a></span>
+  </div>
 </footer>
 
 <script>
