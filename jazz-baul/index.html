@@ -82,7 +82,7 @@ html.js .hero-bg img{animation:jbKenBurns 2.4s var(--ease) both}
 /* scrim — dark bottom band behind the text strip; keeps the photo/face above it visible */
 .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top, var(--bg) 4%, rgba(15,11,7,.85) 34%, rgba(15,11,7,.25) 68%, transparent 90%)}
 .hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;max-width:1120px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,72px);min-width:0}
-@media(min-width:721px){ .hero-inner{align-items:flex-end;text-align:right} }
+@media(min-width:721px){ .hero-inner{align-items:flex-end;text-align:right}.hero::after{display:none}.hero-bg img{filter:grayscale(.05) sepia(.05) contrast(1.02)}.hero .kicker,.hero-title,.hero-sub{text-shadow:0 1px 3px rgba(10,7,4,.72),0 4px 18px rgba(10,7,4,.55)} }
 /* allow hero text to wrap/shrink so it never forces the section wider than the viewport */
 .hero-inner>*{min-width:0;max-width:100%}
 .hero-title,.hero-sub,.kicker{overflow-wrap:anywhere}
