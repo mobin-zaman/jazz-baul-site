@@ -135,6 +135,18 @@ html[data-theme="light"] .toggle .sun{display:inline}
 .contact-box h3{font-size:24px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:10px}
 .contact-box .lede{color:var(--ink-faint);font-size:15px;margin-bottom:26px}
 .contact-email{color:var(--accent);font-size:20px;word-break:break-all;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--line)}
+.contact-box .con{display:flex;gap:14px;margin-bottom:14px;color:var(--ink-dim);font-size:14px;line-height:1.5}
+.contact-box .con span{min-width:78px;color:var(--ink-faint);text-transform:uppercase;font-size:11px;letter-spacing:.12em;padding-top:3px}
+.contact-box .con a{color:var(--accent);word-break:break-all}
+
+/* film / movie posters */
+.film-grid{display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px}
+.poster{margin:0}
+.poster img{width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--line);box-shadow:0 18px 50px var(--shade)}
+.poster figcaption{display:flex;flex-direction:column;gap:4px;margin-top:16px}
+.poster-title{font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.03em}
+.poster-sub{color:var(--ink-faint);font-size:13px;letter-spacing:.04em}
+@media(min-width:720px){ .film-grid{grid-template-columns:1fr 1fr;gap:48px} .poster img{max-height:560px;object-fit:cover;object-position:top center} }
 .back-link{font-size:13px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
 
 /* footer */
@@ -165,6 +177,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
     <a href="#services">Services</a>
     <a href="#process">Process</a>
     <a href="#work">Work</a>
+    <a href="#film">Film</a>
     <a href="#about">Studio</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -178,6 +191,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
   <a href="#services">Services</a>
   <a href="#process">Process</a>
   <a href="#work">Work</a>
+  <a href="#film">Film</a>
   <a href="#about">Studio</a>
   <a href="#contact">Contact</a>
 </div>
@@ -280,14 +294,34 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
     </div>
   </section>
 
+  <!-- MOVIE / FILM -->
+  <section id="film">
+    <div class="wrap">
+      <div class="section-head reveal"><span class="eyebrow">On the big screen</span><h2>Film &amp; Sound</h2><p class="lede">Akram Siddiquee's work as a sound designer extends to cinema — the studio's first journeys on the big screen.</p></div>
+      <div class="film-grid">
+        <figure class="poster reveal">
+          <img src="assets/film-city-of-death.jpg" alt="City of Death — A Black Satire by Moin Uddin Pathan (bullseye Production)" width="720" height="1094" loading="eager">
+          <figcaption><span class="poster-title">CITY OF DEATH</span><span class="poster-sub">A Black Satire · Moin Uddin Pathan</span></figcaption>
+        </figure>
+        <figure class="poster reveal" style="transition-delay:80ms">
+          <img src="assets/film-bengali.jpg" alt="এখানে রাজনৈতিক আলাপ জরুরি — Directed by Ahmed Hasan Sunny" width="640" height="800" loading="eager">
+          <figcaption><span class="poster-title">এখানে রাজনৈতিক আলাপ জরুরি</span><span class="poster-sub">Directed by Ahmed Hasan Sunny</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
       <div class="section-head reveal"><span class="eyebrow">Book the studio</span><h2>Start a project</h2><p class="lede"><a class="back-link" href="https://mobin-zaman.github.io/jazz-baul-site/akram-site/">← Visit AKRAM, the artist</a></p></div>
       <div class="contact-box reveal">
         <h3>Jazz Baul Records</h3>
-        <p class="lede">Tell us what you're making — a song, an album, a film, a game, a campaign. We'll scope it and get back to you.</p>
-        <a class="contact-email" href="mailto:Akramsiddiquee.official@gmail.com?subject=Project%20enquiry%20—%20Jazz%20Baul%20Records">Akramsiddiquee.official@gmail.com</a>
+        <p class="lede">🎙️ Get your audio right — composing, recording, mixing, mastering &amp; sound design, all under one roof.</p>
+        <p class="con"><span>Studio</span>House 73, Road 2, Block A, Niketon — Dhaka, Bangladesh</p>
+        <p class="con"><span>Phone</span><a href="tel:+8801989414761">+880 1989-414761</a></p>
+        <p class="con"><span>Email</span><a class="contact-email" href="mailto:jazzbaul.records@gmail.com">jazzbaul.records@gmail.com</a></p>
+        <p class="con"><span>Facebook</span><a href="https://www.facebook.com/profile.php?id=61574599360947" target="_blank" rel="noopener">Jazz Baul Records — Follow the studio</a></p>
       </div>
     </div>
   </section>
