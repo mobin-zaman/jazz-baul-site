@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Jazz Baul Records — a professional sound studio in Dhaka for recording, music production, sound design, mixing and mastering. For music, film, animation, games and brands.">
-<title>Jazz Baul Records — Sound Studio · Recording, Production, Mixing &amp; Mastering</title>
+<meta name="description" content="Jazz Baul Records — a professional recording studio in Dhaka. Recording, music production, sound design, mixing and mastering for music, film, animation, games and brands.">
+<title>Jazz Baul Records — Recording Studio · Dhaka</title>
 <script>
 document.documentElement.classList.add('js');
 (function(){
@@ -16,39 +16,51 @@ document.documentElement.classList.add('js');
 })();
 </script>
 <style>
+/* Canva Sans — body face (self-hosted) */
 @font-face{font-family:'Canva Sans';src:url(assets/fonts/canva-sans-latin.woff2) format("woff2");font-weight:400 700;font-style:normal;font-display:swap;}
+/* Warm cinematic studio palette — inspired by English Oak Recording */
 :root{
-  --bg:#0d0d0f;--bg-raise:#141417;--ink:#f2f2ec;--ink-dim:#b8b8b0;--ink-faint:#7c7c74;
-  --accent:#8a8a85;--line:#ffffff1f;--shade:rgba(0,0,0,.55);
-  --nav-h:64px;--radius:10px;--ease:cubic-bezier(0.23,1,0.32,1);
-  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
-  --display:'Canva Sans',var(--mono);
-  --sans:'Canva Sans','Noto Sans Bengali','Segoe UI',system-ui,-apple-system,sans-serif;
+  --bg:#35302B;          /* warm dark brown */
+  --bg-raise:#403a33;
+  --ink:#EDE0D1;         /* warm ivory */
+  --ink-dim:#c9b8a3;
+  --ink-faint:#9c8a74;
+  --accent:#C9A87C;      /* warm brass */
+  --line:rgba(237,224,209,.16);
+  --shade:rgba(20,16,12,.55);
+  --nav-h:68px; --radius:6px;
+  --ease:cubic-bezier(0.23,1,0.32,1);
+  --display:'Canva Sans','Georgia',serif;   /* elegant all-cap display (Sackers-like) via weight+tracking */
+  --sans:'Canva Sans','Futura','Century Gothic','Segoe UI',system-ui,'Noto Sans Bengali',sans-serif;
   color-scheme:dark;
 }
-html[data-theme="light"]{--bg:#f4f4f0;--bg-raise:#fff;--ink:#101012;--ink-dim:#3a3a40;--ink-faint:#6f6f78;--accent:#6f6f78;--line:#00000020;--shade:rgba(0,0,0,.08);color-scheme:light;}
+html[data-theme="light"]{
+  --bg:#f2ece3; --bg-raise:#fffdf8; --ink:#2a241e; --ink-dim:#4a4035; --ink-faint:#6f6253;
+  --accent:#8a6b45; --line:rgba(42,36,30,.18); --shade:rgba(0,0,0,.10); color-scheme:light;
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px)}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background 300ms var(--ease),color 300ms var(--ease)}
-body,.nav,.menu,.btn,.svc,.process-step,.vcard,.section-head,.footer,.track-line,.tagline,.upper{transition:background 300ms var(--ease),color 300ms var(--ease),border-color 300ms var(--ease)}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background 320ms var(--ease),color 320ms var(--ease)}
+body,.nav,.menu,.btn,.svc,.proc-step,.vcard,.footer,.section-head,.track-title,.track-meta,.tagline,.upper,.hero-sub,.lede{transition:background 320ms var(--ease),color 320ms var(--ease),border-color 320ms var(--ease)}
 a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
-.display{font-family:var(--display);font-weight:800;line-height:.95;letter-spacing:-0.03em}
-h2{font-family:var(--display);font-size:clamp(28px,4.5vw,44px);letter-spacing:-0.02em;line-height:1}
-.eyebrow,.label{text-transform:uppercase;letter-spacing:.22em;font-size:11px;color:var(--accent);font-family:var(--mono)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-section{padding:104px 0}
-.section-head{margin-bottom:52px;display:flex;flex-direction:column;gap:12px}
-.section-head h2{font-size:clamp(32px,5vw,54px)}
-.lede{color:var(--ink-faint);max-width:60ch;font-size:16px;margin-top:6px}
+h1,h2,h3{font-family:var(--display)}
+/* Editorial display: heavy all-caps, tight tracking (Sackers Gothic-esque) */
+.display{font-weight:800;text-transform:uppercase;line-height:1.02;letter-spacing:.02em}
+.hero-title{font-size:clamp(44px,9vw,104px);letter-spacing:.02em}
+h2{font-family:var(--display);font-size:clamp(30px,5vw,54px);text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+.eyebrow,.label,.kicker{text-transform:uppercase;letter-spacing:.26em;font-size:11px;color:var(--accent);font-family:var(--sans)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:110px 0}
+.section-head{margin-bottom:56px;display:flex;flex-direction:column;gap:14px}
+.lede{color:var(--ink-faint);max-width:62ch;font-size:16px;margin-top:8px;line-height:1.7}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 24px;max-width:1080px;margin:0 auto;background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 28px;max-width:1120px;margin:0 auto;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{width:30px;height:30px;border-radius:6px;object-fit:cover}
-.brand-mark{font-family:var(--mono);font-weight:900;text-transform:uppercase;font-size:14px;letter-spacing:.05em;color:var(--ink);white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:28px;font-family:var(--mono);font-size:13px}
-.nav-links a{color:var(--ink-faint);letter-spacing:.1em}
-.nav-links a:hover{color:var(--ink)}
+.brand img{width:32px;height:32px;border-radius:5px;object-fit:cover;filter:sepia(.2)}
+.brand-mark{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.08em;color:var(--ink)}
+.nav-links{display:flex;align-items:center;gap:30px;font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.nav-links a{color:var(--ink-faint)}.nav-links a:hover{color:var(--ink)}
 .nav-right{display:flex;align-items:center;gap:14px}
 .toggle{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center;font-size:18px;transition:transform 160ms var(--ease),border-color 240ms var(--ease)}
 .toggle:active{transform:scale(0.9)}
@@ -63,81 +75,83 @@ html[data-theme="light"] .toggle .sun{display:inline}
 .menu-open .burger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 .menu{position:fixed;inset:var(--nav-h) 0 0 0;z-index:40;background:var(--bg);padding:32px 24px;display:flex;flex-direction:column;gap:6px;opacity:0;pointer-events:none;visibility:hidden;transform:translateY(-12px);transition:opacity 260ms var(--ease),transform 260ms var(--ease),visibility 0s linear 260ms}
 .menu-open .menu{opacity:1;pointer-events:auto;transform:translateY(0);visibility:visible;transition:opacity 260ms var(--ease),transform 260ms var(--ease)}
-.menu a{padding:16px 4px;font-family:var(--mono);font-size:20px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--line);color:var(--ink)}
+.menu a{padding:16px 4px;font-family:var(--sans);font-size:20px;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--line);color:var(--ink)}
 .menu a:active{transform:scale(0.97)}
 
-/* hero */
-.hero{min-height:calc(92vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;padding:72px 0;position:relative}
-.hero-logo{width:clamp(96px,12vw,140px);margin-bottom:32px}
-.hero-logo img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);filter:grayscale(1) contrast(1.05)}
-.upper{font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
-.hero-title{font-size:clamp(42px,9vw,96px);letter-spacing:-0.04em}
-.hero-sub{font-size:clamp(16px,2.6vw,22px);color:var(--ink-dim);margin-top:22px;max-width:52ch}
+/* hero — full-bleed cinematic */
+.hero{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:calc(92vh - var(--nav-h));padding:0;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background:var(--shade)}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(.15) sepia(.18) brightness(.82) contrast(1.06)}
+.hero-inner{position:relative;z-index:2;padding:120px 24px 84px;max-width:1120px;margin:0 auto;width:100%}
+.hero .kicker{color:var(--accent);margin-bottom:20px}
+.hero-title{margin:0}
+.hero-logo{width:clamp(120px,16vw,200px);height:auto;margin-bottom:26px;border-radius:10px;border:1px solid var(--line);filter:sepia(.15) saturate(.75) contrast(1.05);box-shadow:0 8px 30px var(--shade)}
+.hero-sub{font-size:clamp(16px,2.4vw,21px);color:var(--ink-dim);margin-top:24px;max-width:50ch;line-height:1.55}
 .hero-sub em{color:var(--ink);font-style:normal}
 .cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:44px;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:var(--radius);font-family:var(--mono);font-weight:600;letter-spacing:.08em;font-size:14px;text-transform:uppercase;cursor:pointer;background:var(--ink);color:var(--bg);border:1px solid transparent;transition:transform 160ms var(--ease),background 240ms var(--ease),color 240ms var(--ease),border-color 240ms var(--ease)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 32px;border-radius:var(--radius);font-family:var(--sans);font-weight:600;letter-spacing:.1em;font-size:12px;text-transform:uppercase;cursor:pointer;background:var(--accent);color:#1c150d;border:1px solid transparent;transition:transform 160ms var(--ease),background 240ms var(--ease),color 240ms var(--ease),border-color 240ms var(--ease)}
 .btn:active{transform:scale(0.97)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.hero-meta{position:absolute;bottom:26px;left:24px;right:24px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.14em}
+.hero-meta{position:absolute;bottom:26px;width:100%;display:flex;justify-content:space-between;align-items:flex-end;z-index:2;padding:0 28px;max-width:1120px;left:50%;transform:translateX(-50%);font-family:var(--sans);font-size:11px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase}
 
-/* services */
-.svc-grid{display:grid;grid-template-columns:1fr;gap:18px}
-.svc{display:flex;flex-direction:column;gap:10px;padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-raise)}
-.svc .num{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.14em}
-.svc h3{font-family:var(--display);font-size:21px}
-.svc p{color:var(--ink-dim);font-size:14px}
+/* services — refined cards */
+.svc-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.svc{display:flex;flex-direction:column;gap:12px;padding:34px 30px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-raise)}
+.svc .num{font-family:var(--display);font-size:13px;color:var(--accent);letter-spacing:.1em}
+.svc h3{font-family:var(--display);font-size:22px;text-transform:uppercase;letter-spacing:.02em}
+.svc p{color:var(--ink-faint);font-size:14px;line-height:1.6}
 
 /* process */
-.proc{display:flex;flex-direction:column;gap:16px}
-.proc-step{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.proc-step{display:flex;gap:22px;padding:26px 0;border-bottom:1px solid var(--line)}
 .proc-step:first-of-type{border-top:1px solid var(--line)}
-.proc-num{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.1em;min-width:44px;padding-top:4px}
-.proc-step h3{font-family:var(--display);font-size:19px}
-.proc-step p{color:var(--ink-faint);font-size:14px;max-width:52ch}
+.proc-num{font-family:var(--display);font-size:13px;color:var(--accent);letter-spacing:.1em;min-width:46px;padding-top:5px}
+.proc-step h3{font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.02em}
+.proc-step p{color:var(--ink-faint);font-size:14px;max-width:54ch}
 
 /* work */
 .disco-grid{display:grid;grid-template-columns:1fr;gap:28px}
 .disco-grid.two{grid-template-columns:1fr}
 .video-wrap{position:relative;width:100%;aspect-ratio:16/9;background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-.vcard{display:flex;flex-direction:column;gap:14px;border-radius:var(--radius);padding:10px;border:1px solid transparent}
-.track-title{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-0.01em;line-height:1.3}
-.track-meta{color:var(--ink-faint);font-size:13px;font-family:var(--mono);letter-spacing:.02em}
+.vcard{display:flex;flex-direction:column;gap:14px;border-radius:var(--radius);padding:12px;border:1px solid transparent}
+.track-title{font-weight:700;font-size:19px;letter-spacing:.01em;line-height:1.3}
+.track-meta{color:var(--ink-faint);font-size:13px;letter-spacing:.03em}
 
 /* about */
-.about-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
+.about-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
 .about-photo{margin:0}
-.about-photo img{width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--line);filter:grayscale(1) contrast(1.06)}
-.studio-bio p{color:var(--ink-dim);max-width:64ch;margin-bottom:20px}
+.about-photo img{width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--line);filter:sepia(.15) saturate(.9) contrast(1.02)}
+.studio-bio p{color:var(--ink-dim);max-width:64ch;margin-bottom:22px;font-size:16px}
 .studio-bio p b{color:var(--ink)}
 .meta-list{list-style:none;border-top:1px solid var(--line)}
-.meta-list li{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font-size:14px}
-.meta-list li span{color:var(--ink-faint);letter-spacing:.08em;text-transform:uppercase;font-size:12px;font-family:var(--mono)}
+.meta-list li{display:flex;justify-content:space-between;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);font-size:14px}
+.meta-list li span{color:var(--ink-faint);letter-spacing:.14em;text-transform:uppercase;font-size:11px}
 .meta-list li strong{color:var(--ink);font-weight:600;text-align:right}
 
 /* contact */
-.contact-box{margin-top:48px;padding:34px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-raise)}
-.contact-box h3{font-family:var(--display);font-size:22px;margin-bottom:8px}
-.contact-box .lede{color:var(--ink-faint);font-size:15px;margin-bottom:24px}
-.contact-email{font-family:var(--mono);color:var(--ink);font-size:19px;word-break:break-all;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line)}
-.back-link{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.08em}
+.contact-box{margin-top:52px;padding:40px 34px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-raise)}
+.contact-box h3{font-size:24px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:10px}
+.contact-box .lede{color:var(--ink-faint);font-size:15px;margin-bottom:26px}
+.contact-email{color:var(--accent);font-size:20px;word-break:break-all;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--line)}
+.back-link{font-size:13px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
 
 /* footer */
-.footer{border-top:1px solid var(--line);padding:44px 24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;max-width:1080px;margin:0 auto;font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.04em}
+.footer{border-top:1px solid var(--line);padding:48px 28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;max-width:1120px;margin:0 auto;font-size:12px;color:var(--ink-faint);letter-spacing:.06em}
 .footer .credit{color:var(--ink);font-weight:600}
 
-@media(hover:hover) and (pointer:fine){ .svc:hover{transform:translateY(-2px);border-color:var(--accent)} .vcard:hover{transform:translateY(-3px);border-color:var(--line)} .btn:hover{border-color:var(--accent)} }
+/* hover gated to fine pointers */
+@media(hover:hover) and (pointer:fine){ .svc:hover{transform:translateY(-2px);border-color:var(--accent)} .vcard:hover{transform:translateY(-3px);border-color:var(--line)} .btn:hover{background:var(--ink);color:var(--bg);border-color:transparent} }
 
 /* responsive */
-@media(min-width:720px){ .nav-links{display:flex}.burger{display:none}.svc-grid{grid-template-columns:repeat(3,1fr)}.disco-grid.two{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr 1.1fr;gap:64px}.about-photo{max-width:420px} }
+@media(min-width:720px){ .nav-links{display:flex}.burger{display:none}.svc-grid{grid-template-columns:repeat(3,1fr)}.disco-grid.two{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr 1.1fr;gap:72px}.about-photo{max-width:440px} }
 @media(max-width:719px){ .nav-links{display:none}.burger{display:flex} }
-@media(max-width:540px){ section{padding:72px 0}.hero-title{font-size:clamp(36px,11vw,58px)}.disco-grid.two{gap:24px}.vcard{background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.video-wrap{border-radius:8px}.cta-row .btn{flex:1 1 100%;justify-content:center}.contact-box{padding:24px}.svc{padding:24px} }
+@media(max-width:540px){ section{padding:76px 0}.hero-title{font-size:clamp(34px,12vw,54px)}.hero-inner{padding:90px 24px 70px}.disco-grid.two{gap:24px}.vcard{background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.video-wrap{border-radius:6px}.cta-row .btn{flex:1 1 100%;justify-content:center}.contact-box{padding:26px}.svc{padding:26px 22px} }
 
 /* reveals */
 .reveal{opacity:1}
-html.js .reveal{opacity:0;transform:translateY(14px)}
-html.js .reveal.small{transform:translateY(8px)}
-html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 700ms var(--ease),transform 700ms var(--ease)}
+html.js .reveal{opacity:0;transform:translateY(16px)}
+html.js .reveal.small{transform:translateY(9px)}
+html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var(--ease),transform 760ms var(--ease)}
 @media(prefers-reduced-motion:reduce){ html.js .reveal{opacity:1;transform:none} *,*::before,*::after{transition-duration:0.001ms !important;transition-delay:0ms !important;animation:none !important} html{scroll-behavior:auto} }
 </style>
 </head>
@@ -148,7 +162,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 700ms var
   <nav class="nav-links" aria-label="Primary">
     <a href="#services">Services</a>
     <a href="#process">Process</a>
-    <a href="#work">Selected Work</a>
+    <a href="#work">Work</a>
     <a href="#about">Studio</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -161,34 +175,34 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 700ms var
 <div class="menu" id="menu">
   <a href="#services">Services</a>
   <a href="#process">Process</a>
-  <a href="#work">Selected Work</a>
+  <a href="#work">Work</a>
   <a href="#about">Studio</a>
   <a href="#contact">Contact</a>
 </div>
 
 <main>
-  <!-- HERO -->
+  <!-- HERO (full-bleed cinematic) -->
   <section class="hero" id="top">
-    <div class="wrap">
-      <div class="hero-logo reveal"><img src="assets/logo.jpg" alt="Jazz Baul Records"></div>
-      <p class="upper reveal">Jazz Baul Records · Dhaka</p>
-      <h1 class="display hero-title reveal" style="transition-delay:60ms">A sound studio<br>for serious projects</h1>
-      <p class="hero-sub reveal" style="transition-delay:120ms">Recording · Music Production · Sound Design · Mixing &amp; Mastering — for music, film, animation, games and brands.</p>
+    <div class="hero-bg" aria-hidden="true"><img src="assets/akram_1.jpg" alt="" loading="eager"></div>
+    <div class="hero-inner">
+      <img class="hero-logo reveal" src="assets/logo.jpg" alt="Jazz Baul Records" width="2000" height="2000" loading="eager">
+      <p class="kicker reveal" style="transition-delay:40ms">Jazz Baul Records · Dhaka · Est. 2018</p>
+      <h1 class="display hero-title reveal" style="transition-delay:80ms">A recording studio<br>for serious sound</h1>
+      <p class="hero-sub reveal" style="transition-delay:140ms">Recording · Music Production · Sound Design · Mixing &amp; Mastering — for music, film, animation, games and brands.</p>
       <div class="cta-row">
-        <a class="btn reveal" href="#contact" style="transition-delay:180ms">Start a project</a>
-        <a class="btn btn-ghost reveal" href="#services" style="transition-delay:240ms">Our services</a>
+        <a class="btn reveal" href="#contact" style="transition-delay:200ms">Start a project</a>
+        <a class="btn btn-ghost reveal" href="#services" style="transition-delay:260ms">Our services</a>
       </div>
-      <div class="hero-meta"><span>Est. Dhaka · 2018</span><span>Jazz Baul Records</span></div>
     </div>
+    <div class="hero-meta"><span>Recording · Mixing · Mastering</span><span>Jazz Baul Records</span></div>
   </section>
 
   <!-- SERVICES -->
   <section id="services">
     <div class="wrap">
-      <div class="section-head reveal"><div><span class="label">~ What we do ~</span><h2>Services</h2></div></div>
-      <p class="lede reveal">Full-service audio production, from first note to final master. Built on over a decade of working with sound.</p>
+      <div class="section-head reveal"><span class="eyebrow">What we do</span><h2>Services</h2><p class="lede">Full-service audio production, from first note to final master — built on more than a decade of working with sound.</p></div>
       <div class="svc-grid">
-        <div class="svc reveal"><span class="num">01</span><h3>Music Production</h3><p>Arrangement, beat &amp; song production to a release-ready record.</p></div>
+        <div class="svc reveal"><span class="num">01</span><h3>Music Production</h3><p>Arrangement, production and song development to a release-ready record.</p></div>
         <div class="svc reveal" style="transition-delay:40ms"><span class="num">02</span><h3>Sound Design</h3><p>Cinematic sound for film, animation and games.</p></div>
         <div class="svc reveal" style="transition-delay:80ms"><span class="num">03</span><h3>Recording</h3><p>Vocals, instruments and voice-over, captured clean and true.</p></div>
         <div class="svc reveal" style="transition-delay:120ms"><span class="num">04</span><h3>Mixing &amp; Mastering</h3><p>Polished, consistent mixes and masters across every platform.</p></div>
@@ -201,22 +215,21 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 700ms var
   <!-- PROCESS -->
   <section id="process">
     <div class="wrap">
-      <div class="section-head reveal"><div><span class="label">~ How we work ~</span><h2>Process</h2></div></div>
+      <div class="section-head reveal"><span class="eyebrow">How we work</span><h2>Process</h2></div>
       <div class="proc">
-        <div class="proc-step reveal"><span class="proc-num">01</span><div><h3>Brief</h3><p>Tell us the project, the reference, and the vision. We scope it and quote.</p></div></div>
-        <div class="proc-step reveal" style="transition-delay:40ms"><span class="proc-num">02</span><div><h3>Pre-production</h3><p>Arrangement, pre-production and a clear plan before anything is recorded.</p></div></div>
+        <div class="proc-step reveal"><span class="proc-num">01</span><div><h3>Brief</h3><p>Tell us the project, the reference and the vision. We scope it and quote.</p></div></div>
+        <div class="proc-step reveal" style="transition-delay:40ms"><span class="proc-num">02</span><div><h3>Pre-production</h3><p>Arrangement, prep and a clear plan before anything is recorded.</p></div></div>
         <div class="proc-step reveal" style="transition-delay:80ms"><span class="proc-num">03</span><div><h3>Production</h3><p>Recording, programming and sound design, captured and shaped in the room.</p></div></div>
-        <div class="proc-step reveal" style="transition-delay:120ms"><span class="proc-num">04</span><div><h3>Mix &amp; Master</h3><p>Balance, mix and master until it translates everywhere. Ready to release.</p></div></div>
-        <div class="proc-step reveal" style="transition-delay:160ms"><span class="proc-num">05</span><div><h3>Delivery</h3><p>Final stems, masters and files delivered clean, organised and approved.</p></div></div>
+        <div class="proc-step reveal" style="transition-delay:120ms"><span class="proc-num">04</span><div><h3>Mix &amp; Master</h3><p>Balance, mix and master until it translates everywhere.</p></div></div>
+        <div class="proc-step reveal" style="transition-delay:160ms"><span class="proc-num">05</span><div><h3>Delivery</h3><p>Stems, masters and files delivered clean, organised and approved.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- SELECTED WORK -->
+  <!-- WORK -->
   <section id="work">
     <div class="wrap">
-      <div class="section-head reveal"><div><span class="label">~ Selected work ~</span><h2>On the label</h2></div></div>
-      <p class="lede reveal">A selection of releases produced and released under Jazz Baul Records.</p>
+      <div class="section-head reveal"><span class="eyebrow">Selected work</span><h2>On the label</h2><p class="lede">A selection of releases produced and released under Jazz Baul Records.</p></div>
       <div class="disco-grid two" style="margin-top:36px">
         <article class="vcard reveal">
           <div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/DOAXEQ11MUA" title="I'll See You In My Dreams" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
@@ -242,16 +255,16 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 700ms var
     </div>
   </section>
 
-  <!-- ABOUT THE STUDIO -->
+  <!-- ABOUT -->
   <section id="about">
     <div class="wrap">
-      <div class="section-head reveal"><div><span class="label">~ The studio ~</span><h2>About</h2></div></div>
+      <div class="section-head reveal"><span class="eyebrow">The studio</span><h2>About</h2></div>
       <div class="about-grid">
-        <figure class="about-photo reveal"><img src="assets/akram_1.jpg" alt="Jazz Baul Records" width="720" height="960" loading="lazy"></figure>
+        <figure class="about-photo reveal"><img src="assets/akram_1.jpg" alt="Jazz Baul Records studio" width="720" height="960" loading="lazy"></figure>
         <div>
         <div class="studio-bio reveal" style="transition-delay:60ms">
-          <p><b>Jazz Baul Records</b> is an independent sound studio and audio production house in Dhaka, founded by <b>Akram Siddiquee</b>. It works across music, film, animation, games and commercial projects.</p>
-          <p>Built on more than a decade of working with sound, the studio covers the full arc of audio — from writing and producing music to sound design, recording, mixing and mastering.</p>
+          <p><b>Jazz Baul Records</b> is an independent sound studio and audio production house in Dhaka, founded by <b>Akram Siddiquee</b>.</p>
+          <p>Built on more than a decade of working with sound, the studio covers the full arc of audio — music production, sound design, recording, mixing and mastering — across music, film, animation, games and commercial projects.</p>
           <p>The room is built for artists and projects that want their sound taken seriously: clean recording, considered production, and mixes that translate everywhere.</p>
           <ul class="meta-list">
             <li><span>Founded</span><strong>Dhaka · 2018</strong></li>
@@ -265,11 +278,10 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 700ms var
     </div>
   </section>
 
-  <!-- CONTACT / BOOK THE STUDIO -->
+  <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
-      <div class="section-head reveal"><div><span class="label">~ Book the studio ~</span><h2>Start a project</h2></div></div>
-      <p class="lede reveal"><a class="back-link" href="../akram-site/index.html">← Visit AKRAM, the artist</a></p>
+      <div class="section-head reveal"><span class="eyebrow">Book the studio</span><h2>Start a project</h2><p class="lede"><a class="back-link" href="../akram-site/index.html">← Visit AKRAM, the artist</a></p></div>
       <div class="contact-box reveal">
         <h3>Jazz Baul Records</h3>
         <p class="lede">Tell us what you're making — a song, an album, a film, a game, a campaign. We'll scope it and get back to you.</p>
@@ -288,9 +300,9 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 700ms var
 <script>
 (function(){
   'use strict';
-  var root=document.documentElement, STORE_KEY='jazzbaul-theme', stored=null;
+  var root=document.documentElement, STORE_KEY='jazzbaul-eo-theme', stored=null;
   try{stored=localStorage.getItem(STORE_KEY);}catch(e){}
-  var theme=stored || 'light';
+  var theme=stored || 'dark';   /* warm-dark by default, like English Oak */
   if(theme==='light'){root.setAttribute('data-theme','light');}else{root.removeAttribute('data-theme');}
   var toggles=document.querySelectorAll('#themeToggle, #themeToggleMobile');
   function setTheme(t){ if(t==='light'){root.setAttribute('data-theme','light');}else{root.removeAttribute('data-theme');} try{localStorage.setItem(STORE_KEY,t);}catch(e){} toggles.forEach(function(b){b.setAttribute('aria-pressed',t==='light'?'true':'false');}); }
