@@ -116,7 +116,9 @@ html[data-theme="light"] .toggle .sun{display:inline}
 
 /* jazz baul records section */
 .studio{background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--radius);padding:40px;margin-top:40px}
-.studio .eyebrow{display:block;margin-bottom:12px}
+.studio .eyebrow{display:block;margin-top:24px;margin-bottom:12px}
+.studio .eyebrow:first-child{margin-top:0}
+.studio-logo{width:240px;height:240px;object-fit:contain;border-radius:var(--radius);border:1px solid var(--line);margin-bottom:8px;filter:grayscale(1) contrast(1.02);background:var(--bg)}
 .studio h3{font-family:var(--display);font-size:clamp(22px,4vw,30px);margin-bottom:12px}
 .studio p{color:var(--ink-dim);max-width:56ch}
 .svc{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
@@ -267,7 +269,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 700ms var
       </div>
       <div class="shows-cta reveal">
         <a class="btn" href="mailto:Akramsiddiquee.official@gmail.com?subject=Booking%20AKRAM">Book AKRAM</a>
-        <p style="color:var(--ink-faint);font-size:14px;max-width:52ch">Dates are announced as they're confirmed. For bookings write to the email above.</p>
+        <p style="color:var(--ink-faint);font-size:14px;max-width:52ch">Dates are announced as they're confirmed. For bookings, write to <a class="contact-email" href="mailto:Akramsiddiquee.official@gmail.com?subject=Booking%20AKRAM">Akramsiddiquee.official@gmail.com</a>.</p>
       </div>
     </div>
   </section>
@@ -277,6 +279,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 700ms var
     <div class="wrap">
       <div class="section-head reveal"><div><span class="label eyebrow">~ The Studio ~</span><h2>Sound &amp; Work</h2></div></div>
       <div class="studio reveal">
+        <img class="studio-logo" src="assets/logo.jpg" alt="Jazz Baul Records logo" width="240" height="240" loading="lazy">
         <span class="eyebrow">Jazz Baul Records</span>
         <h3>Jazz Baul Records</h3>
         <p>Jazz Baul Records is Akram Siddiquee's independent studio and audio production space, working across music, film, animation, games and commercial projects.</p>
