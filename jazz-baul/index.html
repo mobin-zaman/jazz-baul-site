@@ -84,6 +84,9 @@ html[data-theme="light"] .toggle .sun{display:inline}
 @media(max-width:720px){ .hero{height:min(72vh, 460px);min-height:320px} }
 .hero-bg{position:absolute;inset:0;z-index:0;background:var(--shade)}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 28%;filter:grayscale(.12) sepia(.12) brightness(.9) contrast(1.05)}
+/* slow cinematic ken-burns on the hero photo (delight, first-time; disabled under reduced-motion) */
+@keyframes jbKenBurns{from{transform:scale(1.08)}to{transform:scale(1)}}
+html.js .hero-bg img{animation:jbKenBurns 2.4s var(--ease) both}
 /* lighter scrim — keeps headline readable on the bottom-left while letting the photo show */
 .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top, var(--bg) 0%, transparent 30%),linear-gradient(to right, rgba(15,11,7,.55), transparent 42%)}
 .hero-inner{position:relative;z-index:2;padding:120px 24px 84px;max-width:1120px;margin:0 auto;width:100%;max-width:100%;min-width:0}
@@ -151,9 +154,9 @@ html[data-theme="light"] .toggle .sun{display:inline}
 /* film / movie posters */
 .film-grid{display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px}
 .poster{margin:0}
-.poster img{width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--line);box-shadow:0 18px 50px var(--shade)}
+.poster img{width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--line);box-shadow:0 18px 50px var(--shade);transition:transform 240ms var(--ease),box-shadow 240ms var(--ease)}
 .poster figcaption{display:flex;flex-direction:column;gap:4px;margin-top:16px}
-.poster-title{font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.03em}
+.poster-title{font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.03em;transition:color 240ms var(--ease)}
 .poster-sub{color:var(--ink-faint);font-size:13px;letter-spacing:.04em}
 @media(min-width:720px){ .film-grid{grid-template-columns:1fr 1fr;gap:48px} .poster img{max-height:560px;object-fit:cover;object-position:top center} }
 .back-link{font-size:13px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
@@ -163,7 +166,7 @@ html[data-theme="light"] .toggle .sun{display:inline}
 .footer .credit{color:var(--ink);font-weight:600}
 
 /* hover gated to fine pointers */
-@media(hover:hover) and (pointer:fine){ .svc:hover{transform:translateY(-2px);border-color:var(--accent)} .vcard:hover{transform:translateY(-3px);border-color:var(--line)} .btn:hover{background:var(--ink);color:var(--bg);border-color:transparent} }
+@media(hover:hover) and (pointer:fine){ .svc:hover{transform:translateY(-2px);border-color:var(--accent)} .vcard:hover{transform:translateY(-3px);border-color:var(--line)} .btn:hover{background:var(--ink);color:var(--bg);border-color:transparent} .poster:hover img{transform:scale(1.02);box-shadow:0 24px 60px var(--shade)} .poster:hover .poster-title{color:var(--accent)} }
 
 /* responsive */
 @media(min-width:720px){ .nav-links{display:flex}.burger{display:none}.svc-grid{grid-template-columns:repeat(3,1fr)}.disco-grid.two{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr 1.1fr;gap:72px}.about-photo{max-width:440px} }
