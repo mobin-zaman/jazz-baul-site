@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Akram Siddiquee, aka Jazz Baul — Baul × Jazz fusion artist from Dhaka, Bangladesh. Singer, songwriter, producer & sound sculptor. Founder of Jazz Baul Records.">
+<title>Akram Siddiquee — Jazz Baul | Singer, Songwriter, Producer | Dhaka</title>
+<script>
+document.documentElement.classList.add('js');
+/* Fix relative asset paths when the site is mounted under a path prefix (e.g. /jazzbaul on the tailnet),
+   vs root (Cloudflare tunnel, local). Inject <base> = directory of the current document so
+   assets/foo.jpg resolves to the mount point, not the origin root. */
+(function(){
+  try{
+    var p = location.pathname;
+    /* The page's mount directory: the URL path itself (with trailing slash) when non-root.
+       e.g. '/jazzbaul' or '/jazzbaul/' -> '/jazzbaul/'; '/' -> '/' (no base needed). */
+    var dir = (p === '/' || p === '') ? '/' : (p.endsWith('/') ? p : p + '/');
+    if(dir && dir !== '/'){
+      var b = document.createElement('base');
+      b.href = dir;
+      document.head.appendChild(b);
+    }
+  }catch(e){}
+})();
+</script>
+<style>
+/* Canva Sans — alexamen.com's font, self-hosted */
+@font-face{
+  font-family:'Canva Sans';
+  src:url(assets/fonts/canva-sans-latin.woff2) format("woff2");
+  font-weight:400 700;font-style:normal;font-display:swap;
+}
+/* ==================== THEME TOKENS (black & white) ==================== */
+:root{
+  --bg:#0d0d0f;
+  --bg-raise:#141417;
+  --ink:#f2f2ec;
+  --ink-dim:#b8b8b0;
+  --ink-faint:#7c7c74;
+  --accent:#8a8a85;          /* single neutral graphite accent */
+  --line:#ffffff1f;
+  --shade:rgba(0,0,0,.55);
+  --nav-h:64px;
+  --radius:10px;
+  --ease:cubic-bezier(0.23,1,0.32,1);
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --display:'Canva Sans',var(--mono);
+  --sans:'Canva Sans','Noto Sans Bengali','Segoe UI',system-ui,-apple-system,sans-serif;
+  color-scheme:dark;
+}
+html[data-theme="light"]{
+  --bg:#f4f4f0;
+  --bg-raise:#ffffff;
+  --ink:#101012;
+  --ink-dim:#3a3a40;
+  --ink-faint:#6f6f78;
+  --accent:#6f6f78;
+  --line:#00000020;
+  --shade:rgba(0,0,0,.08);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px)}
+body{
+  font-family:var(--sans);
+  background:var(--bg);color:var(--ink);
+  line-height:1.6;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  transition:background 300ms var(--ease),color 300ms var(--ease);
+}
+/* theme flip cross-fades colors (not transforms) broadly */
+body, .nav, .menu, .btn, .rcard, .fcard, .vcard, .show-row, .section-head, .footer,
+.about-photo img, .track-line, .join-form input, .join-form button, .logo-wrap,
+.meta-list li, .bio p b, .tagline, .upper{
+  transition:background 300ms var(--ease),color 300ms var(--ease),
+             border-color 300ms var(--ease),background-color 300ms var(--ease);
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ==================== TYPE ==================== */
+.display{font-family:var(--display);font-weight:800;line-height:.95;letter-spacing:-0.03em;
+  font-optical-sizing:auto}
+h2{font-family:var(--display);font-size:clamp(26px,4vw,40px);letter-spacing:-0.02em;line-height:1}
+label{text-transform:uppercase;letter-spacing:.22em;font-size:11px;color:var(--accent);font-family:var(--mono)}
+
+/* ==================== LAYOUT ==================== */
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.section-head{margin-bottom:48px;display:flex;flex-direction:column;gap:10px}
+.section-head h2{font-size:clamp(30px,5vw,52px)}
+
+/* ==================== NAV ==================== */
+.nav{
+  position:sticky;top:0;z-index:50;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;max-width:1080px;margin:0 auto;
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{
+  font-family:var(--mono);font-weight:900;text-transform:uppercase;
+  font-size:18px;letter-spacing:.04em;line-height:1;color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+.nav-links{display:flex;align-items:center;gap:28px;font-family:var(--mono);font-size:13px}
+.nav-links a{color:var(--ink-faint);letter-spacing:.1em;transition:color 240ms var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.toggle{
+  width:44px;height:44px;border:1px solid var(--line);border-radius:50%;
+  background:transparent;color:var(--ink);cursor:pointer;
+  display:grid;place-items:center;font-size:18px;
+  transition:transform 160ms var(--ease),border-color 240ms var(--ease);
+}
+.toggle:active{transform:scale(0.9)}
+.toggle:hover[data-hover="1"]{border-color:var(--accent);transform:rotate(-8deg)}
+.toggle .sun,.toggle .moon{line-height:1;display:none}
+/* default = dark -> show moon; light theme -> show sun */
+.toggle .moon{display:inline}
+html[data-theme="light"] .toggle .moon{display:none}
+html[data-theme="light"] .toggle .sun{display:inline}
+
+/* burger */
+.burger{display:none;width:48px;height:48px;background:none;border:0;cursor:pointer;flex-direction:column;justify-content:center;gap:6px;align-items:center}
+.burger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform 220ms var(--ease),opacity 220ms var(--ease)}
+.menu-open .burger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.menu-open .burger span:nth-child(2){opacity:0}
+.menu-open .burger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* mobile overlay */
+.menu{
+  position:fixed;inset:var(--nav-h) 0 0 0;z-index:40;background:var(--bg);
+  padding:32px 24px;display:flex;flex-direction:column;gap:6px;
+  opacity:0;pointer-events:none;visibility:hidden;transform:translateY(-12px);
+  transition:opacity 260ms var(--ease),transform 260ms var(--ease),visibility 0s linear 260ms;
+}
+.menu-open .menu{opacity:1;pointer-events:auto;transform:translateY(0);visibility:visible;transition:opacity 260ms var(--ease),transform 260ms var(--ease)}
+.menu a{padding:16px 4px;font-family:var(--mono);font-size:20px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--line);color:var(--ink)}
+.menu a:active{transform:scale(0.97)}
+.menu .menu-theme{display:flex;align-items:center;justify-content:space-between;padding:16px 4px;border-bottom:1px solid var(--line);font-family:var(--mono);letter-spacing:.06em}
+
+/* ==================== HERO ==================== */
+.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;padding:80px 0 72px;position:relative}
+.hero .wrap{position:relative;z-index:2}
+/* Profile-cover banner at top of the hero */
+.cover{
+  margin:0 auto;max-width:680px;padding:0 24px;width:100%;
+}
+.cover img{
+  width:100%;height:auto;object-fit:cover;object-position:center;
+  border-radius:14px;border:1px solid var(--line);display:block;
+  filter:grayscale(1) contrast(1.02);
+  max-height:none;
+}
+.hero{padding-top:20px}
+.upper{font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+.name{font-size:clamp(52px,13vw,140px);letter-spacing:-0.04em}
+.tagline{font-size:clamp(17px,3vw,23px);color:var(--ink-dim);margin-top:22px;max-width:46ch}
+.stage{font-family:var(--mono);font-size:14px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;margin-top:22px}
+.stage strong{color:var(--accent);font-weight:700}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:44px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;min-height:52px;
+  padding:0 28px;border-radius:var(--radius);font-family:var(--mono);font-weight:600;
+  letter-spacing:.08em;font-size:14px;text-transform:uppercase;cursor:pointer;
+  background:var(--ink);color:var(--bg);border:1px solid transparent;
+  transition:transform 160ms var(--ease),background 240ms var(--ease),color 240ms var(--ease),border-color 240ms var(--ease);
+}
+.btn:active{transform:scale(0.97)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.social-row{display:flex;gap:18px;margin-top:34px}
+.social-row a{color:var(--ink-faint);font-family:var(--mono);font-size:13px;letter-spacing:.08em;
+  transition:color 240ms var(--ease)}
+.hero-meta{position:absolute;bottom:26px;left:24px;right:24px;display:flex;justify-content:space-between;
+  font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.14em}
+
+/* ==================== DISCOGRAPHY ==================== */
+.section-note{color:var(--ink-faint);max-width:60ch;margin-bottom:36px;font-size:15px}
+.subgroup{margin:40px 0 18px}
+.subgroup-label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.disco-grid{display:grid;grid-template-columns:1fr;gap:28px}
+.disco-grid.two{grid-template-columns:1fr}
+.video-wrap{position:relative;width:100%;aspect-ratio:16/9;background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.vcard{display:flex;flex-direction:column;gap:14px;border-radius:var(--radius);padding:10px;
+  border:1px solid transparent;transition:transform 260ms var(--ease),border-color 260ms var(--ease)}
+.track-title{font-family:var(--mono);font-weight:700;font-size:17px;letter-spacing:-0.01em;line-height:1.3}
+.track-meta{color:var(--ink-faint);font-size:13px;font-family:var(--mono);letter-spacing:.02em}
+.track-line{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.track-line .listen{color:var(--accent);font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  white-space:nowrap;transition:color 200ms var(--ease)}
+
+/* ==================== ABOUT ==================== */
+.about-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
+.about-photo{margin:0}
+.about-photo img{width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--line);
+  filter:grayscale(1) contrast(1.06);object-fit:cover;box-shadow:0 1px 1px rgba(0,0,0,.2)}
+.about-lede{font-size:clamp(20px,4vw,30px);line-height:1.35;letter-spacing:-0.01em;max-width:26ch;color:var(--ink)}
+.about-lede .beng{color:var(--accent);font-weight:600}
+.bio p{color:var(--ink-dim);max-width:62ch;margin-bottom:18px}
+.bio p b{color:var(--ink);font-weight:600}
+.meta-list{list-style:none;border-top:1px solid var(--line)}
+.meta-list li{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font-size:14px}
+.meta-list li span{color:var(--ink-faint);letter-spacing:.08em;text-transform:uppercase;font-size:12px;font-family:var(--mono)}
+.meta-list li strong{color:var(--ink);font-weight:600;text-align:right}
+
+/* ==================== SHOWS ==================== */
+.shows{display:flex;flex-direction:column}
+.show-row{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:26px 0;border-bottom:1px solid var(--line)}
+.show-row:first-of-type{border-top:1px solid var(--line)}
+.s-venue{font-weight:600;font-size:17px}
+.s-sub{color:var(--ink-faint);font-size:14px;margin-top:4px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:8px 14px;border:1px solid var(--line);border-radius:100px;white-space:nowrap}
+.tag.open{border-color:var(--accent);color:var(--accent)}
+.shows-cta{margin-top:32px;display:flex;flex-direction:column;gap:16px}
+
+/* ==================== FOLLOW ==================== */
+.follow-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fcard{display:flex;flex-direction:column;justify-content:space-between;gap:28px;
+  padding:26px;border:1px solid var(--line);border-radius:var(--radius);
+  transition:transform 240ms var(--ease),border-color 240ms var(--ease),background 240ms var(--ease)}
+.fcard.small{grid-column:1/1}
+.fname{font-family:var(--mono);font-weight:600;font-size:16px}
+.fgo{color:var(--ink-faint);font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+.join-box{margin-top:44px;padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-raise)}
+.join-box h3{font-family:var(--mono);font-size:19px;margin-bottom:8px}
+.join-box p{color:var(--ink-faint);font-size:14px;margin-bottom:20px}
+.join-form{display:flex;flex-direction:column;gap:12px}
+.join-form input{flex:1;min-height:52px;padding:0 18px;background:transparent;border:1px solid var(--line);
+  border-radius:var(--radius);color:var(--ink);font-family:var(--sans);font-size:15px}
+.join-form input::placeholder{color:var(--ink-faint)}
+.join-form button{min-height:52px;padding:0 24px;border:0;border-radius:var(--radius);
+  background:var(--ink);color:var(--bg);font-family:var(--mono);font-weight:600;
+  letter-spacing:.08em;cursor:pointer;transition:transform 160ms var(--ease)}
+.join-form button:active{transform:scale(0.97)}
+
+/* ==================== FOOTER ==================== */
+.footer{border-top:1px solid var(--line);padding:40px 24px;display:flex;flex-wrap:wrap;
+  justify-content:space-between;gap:16px;max-width:1080px;margin:0 auto;
+  font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.04em}
+.footer .credit{color:var(--ink);font-weight:600;transition:color 200ms var(--ease)}
+
+/* ==================== HOVER (gated) ==================== */
+@media (hover:hover) and (pointer:fine){
+  .vcard:hover{transform:translateY(-3px);border-color:var(--line)}
+  .vcard:hover .video-wrap{border-color:var(--accent)}
+  .fcard:hover{transform:translateY(-3px);border-color:var(--accent)}
+  .social-row a:hover{color:var(--ink)}
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media(min-width:720px){
+  .nav-links{display:flex}
+  .burger{display:none}
+  .disco-grid.two{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr 1.1fr;gap:64px}
+  .about-photo{max-width:420px}
+  .follow-grid{grid-template-columns:repeat(4,1fr)}
+  .fcard.small{grid-column:auto}
+  .join-form{flex-direction:row}
+  .join-form input{flex:1}
+}
+@media(max-width:719px){
+  .nav-links{display:none}
+  .burger{display:flex}
+}
+@media(max-width:420px){
+  .follow-grid{grid-template-columns:1fr}
+}
+
+/* ============ MOBILE-PHONE POLISH (≤ 540px) ============ */
+@media(max-width:540px){
+  section{padding:64px 0}
+  .section-head{margin-bottom:36px}
+  /* hero name: fit "Siddiquee" comfortably on small screens */
+  .name{font-size:clamp(40px,11vw,56px);letter-spacing:-0.025em}
+  .cover img{height:auto;object-position:center}
+  /* discography: distinct stacked cards */
+  .disco-grid.two{gap:24px}
+  .vcard{background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+  .video-wrap{border-radius:8px}
+  /* about: tighter photo + body */
+  .about-grid{gap:28px}
+  .about-photo{max-width:340px}
+  /* cta buttons width-adaptive on phones */
+  .cta-row .btn{flex:1 1 100%;justify-content:center}
+  /* tag font-size up for touch */
+  .tag{font-size:12px;padding:9px 16px}
+  .hero{padding-top:14px}
+}
+
+/* ==================== REVEALS (JS-gated, visible by default) ==================== */
+.reveal{opacity:1}
+html.js .reveal{opacity:0;transform:translateY(14px)}
+html.js .reveal.small{transform:translateY(8px)}
+html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 700ms var(--ease),transform 700ms var(--ease)}
+
+/* reduced motion */
+@media(prefers-reduced-motion:reduce){
+  html.js .reveal{opacity:1;transform:none}
+  html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 200ms ease}
+  *,*::before,*::after{transition-duration:0.001ms !important;transition-delay:0ms !important;animation:none !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="#top"><span class="brand-mark">Akram&nbsp;Siddiquee</span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#discography">Discography</a>
+    <a href="#about">About</a>
+    <a href="#shows">Shows</a>
+    <a href="#follow">Follow</a>
+  </nav>
+  <div class="nav-right">
+    <button class="toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false" data-hover="1">
+      <span class="moon" aria-hidden="true">☾</span><span class="sun" aria-hidden="true">☀</span>
+    </button>
+    <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <a href="#discography">Discography</a>
+  <a href="#about">About</a>
+  <a href="#shows">Shows</a>
+  <a href="#follow">Follow</a>
+  <div class="menu-theme">
+    <span>Theme</span>
+    <button class="toggle" id="themeToggleMobile" aria-label="Toggle theme" aria-pressed="false" data-hover="1">
+      <span class="moon" aria-hidden="true">☾</span><span class="sun" aria-hidden="true">☀</span>
+    </button>
+  </div>
+</div>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <figure class="cover reveal">
+      <img src="assets/akram-cover.jpg" alt="Akram Siddiquee — Jazz Baul" width="1254" height="1254" loading="eager">
+    </figure>
+    <div class="wrap">
+      <p class="upper reveal">Akram Siddiquee · Dhaka · Bangladesh</p>
+      <h1 class="display name reveal" style="transition-delay:60ms">Akram<br>Siddiquee</h1>
+      <p class="stage reveal" style="transition-delay:120ms">as <strong>Jazz Baul</strong> — the fusion project</p>
+      <p class="tagline reveal" style="transition-delay:180ms">“Beats in the dark, rhythm comes alive.”<br>Singer-songwriter, multi-instrumentalist, sound designer — working between <span class="beng">বাউল</span> folk and jazz, in Bengali and English.</p>
+      <div class="cta-row">
+        <a class="btn reveal" href="#discography" style="transition-delay:240ms">Listen</a>
+        <a class="btn btn-ghost reveal" href="https://linktr.ee/Jazzbaul" target="_blank" rel="noopener" style="transition-delay:300ms">All Links</a>
+      </div>
+      <div class="social-row reveal" style="transition-delay:360ms">
+        <a href="https://www.youtube.com/@JazzBaul" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.facebook.com/jazzbaaul" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/akram_jazzbaul/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linktr.ee/Jazzbaul" target="_blank" rel="noopener">Linktree</a>
+      </div>
+      <div class="hero-meta"><span>Jazz Baul Records</span><span>Est. 2018 · Dhaka</span></div>
+    </div>
+  </section>
+
+  <!-- ============ DISCOGRAPHY ============ -->
+  <section id="discography">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="label">~ Now Playing ~</span><h2>Discography</h2></div>
+      </div>
+      <p class="section-note reveal">Every track below, straight from the studio and the road. Press play — or jump to YouTube.</p>
+
+      <div class="subgroup reveal"><span class="subgroup-label">Singles · Jazz Baul Records</span></div>
+      <div class="disco-grid two">
+        <article class="vcard reveal">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/DOAXEQ11MUA" title="I'll See You In My Dreams | স্বপ্নদর্শীর চোখে তুমি" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="track-line"><h3 class="track-title">I'll See You In My Dreams<br><span class="beng">স্বপ্নদর্শীর চোখে তুমি</span></h3><a class="listen" href="https://www.youtube.com/watch?v=DOAXEQ11MUA" target="_blank" rel="noopener">YouTube ↗</a></div>
+          <p class="track-meta">feat. @Daruchinib9 · Jazz Baul Records</p>
+        </article>
+        <article class="vcard reveal" style="transition-delay:40ms">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/MFEuVLQWdIo" title="Oronne Boishakh | অরণ্যে বৈশাখ" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="track-line"><h3 class="track-title">Oronne Boishakh<br><span class="beng">অরণ্যে বৈশাখ</span></h3><a class="listen" href="https://www.youtube.com/watch?v=MFEuVLQWdIo" target="_blank" rel="noopener">YouTube ↗</a></div>
+          <p class="track-meta">Jazz Baul Records</p>
+        </article>
+        <article class="vcard reveal" style="transition-delay:80ms">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/mSXWIlz2Q00" title="AAY RE AAY | আয় রে আয়" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <h3 class="track-title">AAY RE AAY · <span class="beng">আয় রে আয়</span></h3>
+          <p class="track-meta">Jazz Baul Records</p>
+        </article>
+        <article class="vcard reveal" style="transition-delay:120ms">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/oE-uEaeuSBs" title="The Painter" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <h3 class="track-title">The Painter</h3>
+          <p class="track-meta">Written &amp; recorded by Akram Siddiquee</p>
+        </article>
+      </div>
+
+      <div class="subgroup reveal"><span class="subgroup-label">Live Sessions</span></div>
+      <div class="disco-grid two">
+        <article class="vcard reveal">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/RuPXIZNzBDw" title="Far away from you (live)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <h3 class="track-title">"Far away from you"</h3>
+          <p class="track-meta">Live recording · singer-songwriter · guitar</p>
+        </article>
+        <article class="vcard reveal" style="transition-delay:40ms">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/QKuSMzjg78o" title="liverecording (Akram)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <h3 class="track-title">Live Session — Voice &amp; Air</h3>
+          <p class="track-meta">Live recording · #liverecording</p>
+        </article>
+        <article class="vcard reveal" style="transition-delay:80ms">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/xf8C_0db1hs" title="jamming (guitar live)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <h3 class="track-title">Jam — Guitar &amp; Guitar</h3>
+          <p class="track-meta">Live jam · #jamming #guitar</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="label">~ The Story ~</span><h2>Akram&nbsp;Siddiquee</h2></div>
+      </div>
+      <div class="about-grid">
+        <figure class="about-photo reveal">
+          <img src="assets/akram_1.jpg" alt="Akram walking along a shoreline at golden hour with a guitar case, in monochrome" width="720" height="960" loading="lazy">
+        </figure>
+        <div>
+        <p class="about-lede reveal">I go where the <span class="beng">বাউল</span> road meets the <span class="beng">জ্যাজ</span> night.</p>
+        <div class="bio reveal" style="transition-delay:60ms">
+          <p><b>Akram Siddiquee</b> — on stage and on record, <b>Jazz Baul</b> — is a singer-songwriter and producer from Dhaka. He works the space between <b>Baul</b> folk and jazz, singing in Bengali and English, often both in the same verse.</p>
+          <p>By day he's a working sound designer with over a decade in the studio: film foley, spatial audio, mixing sessions for other artists in the city. By night the guitar comes out and the songs take over. He runs <b>Jazz Baul Records</b>, plays around Song Zone and BackStage Club, and studied at North South University. The journey's been going since <b>2018</b>.</p>
+          <ul class="meta-list">
+            <li><span>Based</span><strong class="beng">মিরপুর, ঢাকা — Mirpur, Dhaka</strong></li>
+            <li><span>Label</span><strong>Jazz Baul Records</strong></li>
+            <li><span>Craft</span><strong>Sound Design · Mix · Production</strong></li>
+            <li><span>Journey</span><strong>Since 2018</strong></li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHOWS ============ -->
+  <section id="shows">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="label">~ On The Stage ~</span><h2>Shows</h2></div>
+      </div>
+      <div class="shows">
+        <div class="show-row reveal">
+          <div><div class="s-venue">At A Venue Near You</div><div class="s-sub">Mirpur · Dhaka · Bangladesh</div></div>
+          <span class="s-tag tag open">Bookings Open</span>
+        </div>
+        <div class="show-row reveal">
+          <div><div class="s-venue">Your Festival · Your Club</div><div class="s-sub">Available worldwide via Jazz Baul Records</div></div>
+          <span class="s-tag tag">Contact</span>
+        </div>
+      </div>
+      <div class="shows-cta reveal">
+        <a class="btn" href="mailto:booking@jazzbaul.example?subject=Booking%20Jazz%20Baul">Book Jazz Baul</a>
+        <p style="color:var(--ink-faint);font-size:14px;max-width:52ch">Dates are announced as they're confirmed. For now: the calendar is open — but the sound is always on.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOLLOW ============ -->
+  <section id="follow">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="label">~ Join ~</span><h2>Follow</h2></div>
+      </div>
+      <div class="follow-grid">
+        <a class="fcard reveal" href="https://www.youtube.com/@JazzBaul" target="_blank" rel="noopener">
+          <span class="fname">YouTube</span><span class="fgo">@JazzBaul →</span>
+        </a>
+        <a class="fcard reveal small" style="transition-delay:40ms" href="https://linktr.ee/Jazzbaul" target="_blank" rel="noopener">
+          <span class="fname">Linktree</span><span class="fgo">All links →</span>
+        </a>
+        <a class="fcard reveal small" style="transition-delay:80ms" href="https://www.facebook.com/jazzbaaul" target="_blank" rel="noopener">
+          <span class="fname">Facebook</span><span class="fgo">@jazzbaaul →</span>
+        </a>
+        <a class="fcard reveal small" style="transition-delay:120ms" href="https://www.instagram.com/akram_jazzbaul/" target="_blank" rel="noopener">
+          <span class="fname">Instagram</span><span class="fgo">@akram_jazzbaul →</span>
+        </a>
+      </div>
+      <div class="join-box reveal">
+        <h3>Join the inner circle</h3>
+        <p>New tracks, session cuts and early ticket news — the best of Jazz Baul, straight to your inbox.</p>
+        <form class="join-form" action="mailto:list@jazzbaul.example" method="post" onsubmit="return false;">
+          <input type="email" aria-label="Email address" placeholder="you@example.com" required>
+          <button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>© <span id="yr"></span> Jazz Baul Records · Akram Siddiquee</span>
+  <span>Dhaka, Bangladesh</span>
+  <span>Made by <a class="credit" href="mailto:mobinzamandev@gmail.com">Mohetuzzaman Mobin</a></span>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---- Theme toggle (B&W palette swap, persisted, honors prefers-color-scheme) ---- */
+  var root = document.documentElement;
+  var STORE_KEY = 'jazzbaul-theme';
+  var stored = null;
+  try { stored = localStorage.getItem(STORE_KEY); } catch(e){}
+  var theme = stored || 'light';
+  if(theme === 'light'){ root.setAttribute('data-theme','light'); }
+  else { root.removeAttribute('data-theme'); }
+  var toggles = document.querySelectorAll('#themeToggle, #themeToggleMobile');
+  function setTheme(t){
+    if(t === 'light'){ root.setAttribute('data-theme','light'); }
+    else { root.removeAttribute('data-theme'); }
+    try { localStorage.setItem(STORE_KEY, t); } catch(e){}
+    toggles.forEach(function(b){ b.setAttribute('aria-pressed', t==='light' ? 'true' : 'false'); });
+  }
+  toggles.forEach(function(b){
+    b.addEventListener('click', function(){
+      var cur = root.hasAttribute('data-theme') ? 'light' : 'dark';
+      setTheme(cur === 'light' ? 'dark' : 'light');
+    });
+  });
+  // init aria-pressed
+  toggles.forEach(function(b){ b.setAttribute('aria-pressed', theme==='light' ? 'true':'false'); });
+
+  /* ---- Mobile menu ---- */
+  var burger = document.querySelector('.burger');
+  var menu = document.getElementById('menu');
+  var body = document.body;
+  function setMenu(open){
+    body.classList.toggle('menu-open', open);
+    if(burger){ burger.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  }
+  if(burger){
+    burger.addEventListener('click', function(){ setMenu(!body.classList.contains('menu-open')); });
+    menu.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){ setMenu(false); }
+    });
+    window.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ setMenu(false); } });
+  }
+
+  /* ---- Reveals: IO + fallback sweep ---- */
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  var shown = [];
+  function show(el){ if(el.classList.contains('is-visible')){ return; } el.classList.add('is-visible'); shown.push(el); }
+  if(reduceMotion){ revealEls.forEach(show); }
+  function sweep(){
+    var vh = window.innerHeight;
+    revealEls.forEach(function(el){
+      if(shown.indexOf(el) !== -1){ return; }
+      var r = el.getBoundingClientRect();
+      if(r.top < vh && r.bottom > 0){ show(el); }
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ show(en.target); io.unobserve(en.target); } });
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+  var t;
+  window.addEventListener('scroll', function(){ clearTimeout(t); t = setTimeout(sweep, 150); }, {passive:true});
+  window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(sweep, 200); });
+  setTimeout(sweep, 250);
+
+  /* ---- year ---- */
+  var yr = document.getElementById('yr'); if(yr){ yr.textContent = String(new Date().getFullYear()); }
+})();
+</script>
+</body>
+</html>

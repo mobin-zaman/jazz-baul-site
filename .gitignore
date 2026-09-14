@@ -1,0 +1,9 @@
+# OMH autopilot / session driver state — not part of the site
+.omh/
+
+# Local runtime / temp
+/tmp/
+*.tmp
+
+# TestSprite local state
+.testsprite/
