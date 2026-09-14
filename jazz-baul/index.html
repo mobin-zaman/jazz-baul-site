@@ -57,7 +57,7 @@ section{padding:110px 0}
 /* nav */
 .nav{position:sticky;top:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 28px;max-width:1120px;margin:0 auto;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{width:32px;height:32px;border-radius:5px;object-fit:cover;filter:sepia(.2)}
+.brand img{width:auto;height:34px;object-fit:contain;border-radius:4px;filter:sepia(.12) saturate(.8)}
 .brand-mark{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.08em;color:var(--ink)}
 .nav-links{display:flex;align-items:center;gap:30px;font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 .nav-links a{color:var(--ink-faint)}.nav-links a:hover{color:var(--ink)}
@@ -81,7 +81,9 @@ html[data-theme="light"] .toggle .sun{display:inline}
 /* hero — full-bleed cinematic */
 .hero{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:calc(92vh - var(--nav-h));padding:0;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0;background:var(--shade)}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(.15) sepia(.18) brightness(.82) contrast(1.06)}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:grayscale(.25) sepia(.22) brightness(.68) contrast(1.06)}
+/* gradient scrim so text stays readable over the photo */
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top, var(--bg) 0%, transparent 26%),linear-gradient(to right, rgba(20,16,12,.72), transparent 55%)}
 .hero-inner{position:relative;z-index:2;padding:120px 24px 84px;max-width:1120px;margin:0 auto;width:100%}
 .hero .kicker{color:var(--accent);margin-bottom:20px}
 .hero-title{margin:0}
@@ -158,7 +160,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
 <body>
 
 <header class="nav">
-  <a class="brand" href="#top"><img src="assets/logo.jpg" alt="Jazz Baul Records"><span class="brand-mark">Jazz Baul Records</span></a>
+  <a class="brand" href="#top"><img src="assets/logo.jpg" alt="Jazz Baul Records"></a>
   <nav class="nav-links" aria-label="Primary">
     <a href="#services">Services</a>
     <a href="#process">Process</a>
@@ -183,7 +185,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
 <main>
   <!-- HERO (full-bleed cinematic) -->
   <section class="hero" id="top">
-    <div class="hero-bg" aria-hidden="true"><img src="assets/akram_1.jpg" alt="" loading="eager"></div>
+    <div class="hero-bg" aria-hidden="true"><img src="assets/studio-mic-large.jpg" alt="" loading="eager"></div>
     <div class="hero-inner">
       <img class="hero-logo reveal" src="assets/logo.jpg" alt="Jazz Baul Records" width="2000" height="2000" loading="eager">
       <p class="kicker reveal" style="transition-delay:40ms">Jazz Baul Records · Dhaka · Est. 2018</p>
@@ -260,7 +262,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
     <div class="wrap">
       <div class="section-head reveal"><span class="eyebrow">The studio</span><h2>About</h2></div>
       <div class="about-grid">
-        <figure class="about-photo reveal"><img src="assets/akram_1.jpg" alt="Jazz Baul Records studio" width="720" height="960" loading="lazy"></figure>
+        <figure class="about-photo reveal"><img src="assets/studio-mic.jpg" alt="Inside the Jazz Baul Records studio" width="990" height="1344" loading="eager"></figure>
         <div>
         <div class="studio-bio reveal" style="transition-delay:60ms">
           <p><b>Jazz Baul Records</b> is an independent sound studio and audio production house in Dhaka, founded by <b>Akram Siddiquee</b>.</p>
