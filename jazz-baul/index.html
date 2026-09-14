@@ -169,13 +169,15 @@ html.js .hero-bg img{animation:jbKenBurns 2.4s var(--ease) both}
 @media(min-width:720px){ .nav-links{display:flex}.burger{display:none}.svc-grid{grid-template-columns:repeat(3,1fr)}.disco-grid.two{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr 1.1fr;gap:72px}.about-photo{max-width:440px} }
 @media(max-width:719px){ .nav-links{display:none}.burger{display:flex} }
 @media(max-width:720px){
-  .hero-inner{align-items:flex-start;text-align:left}
-  .hero-logo{height:88px;margin-bottom:20px}
-  .hero-sub{margin-left:0}
-  .hero::after{background:linear-gradient(to top, var(--bg) 4%, rgba(15,11,7,.85) 40%, rgba(15,11,7,.3) 74%, transparent 94%)}
+  .hero{justify-content:flex-end;padding:92px 0 40px;min-height:min(88vh,600px)}
+  .hero-inner{align-items:center;text-align:center}
+  .hero-logo{height:64px;margin-bottom:16px}
+  .hero-sub{margin:20px auto 0}
+  .hero::after{background:linear-gradient(to top, var(--bg) 8%, rgba(15,11,7,.82) 42%, rgba(15,11,7,.22) 78%, transparent 96%)}
   .hero-title{max-width:100%}
-  .hero-sub{max-width:100%}
-  .cta-row{max-width:100%}
+  .hero-sub{max-width:92%}
+  .cta-row{max-width:100%;justify-content:center}
+  .hero-meta{padding:0 24px}
 }
 @media(max-width:540px){ section{padding:76px 0}.hero-title{font-size:clamp(30px,11vw,48px)}.hero-inner{padding:80px 24px 64px}.hero-bg img{object-position:center 6%}.disco-grid.two{gap:24px}.vcard{background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.video-wrap{border-radius:6px}.cta-row .btn{flex:1 1 100%;justify-content:center}.contact-box{padding:26px}.svc{padding:26px 22px} }
 
@@ -224,7 +226,6 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
       <p class="hero-sub reveal" style="transition-delay:140ms">Recording · Music Production · Sound Design · Mixing &amp; Mastering — for music, film, animation, games and brands.</p>
       <div class="cta-row">
         <a class="btn reveal" href="#contact" style="transition-delay:200ms">Start a project</a>
-        <a class="btn btn-ghost reveal" href="#services" style="transition-delay:260ms">Our services</a>
       </div>
     </div>
     <div class="hero-meta"><span>Recording · Mixing · Mastering</span><span>Jazz Baul Records</span></div>
