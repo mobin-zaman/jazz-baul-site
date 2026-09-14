@@ -42,7 +42,7 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 h1,h2,h3{font-family:var(--display)}
 /* Editorial display: heavy all-caps, tight tracking (Sackers Gothic-esque) */
 .display{font-weight:800;text-transform:uppercase;line-height:1.02;letter-spacing:.02em}
-.hero-title{font-size:clamp(36px,6.2vw,84px);letter-spacing:.02em}
+.hero-title{font-size:clamp(32px,5.2vw,76px);letter-spacing:.02em}
 h2{font-family:var(--display);font-size:clamp(30px,5vw,54px);text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
 .eyebrow,.label,.kicker{text-transform:uppercase;letter-spacing:.26em;font-size:11px;color:var(--accent);font-family:var(--sans)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
@@ -70,17 +70,17 @@ section{padding:110px 0}
 .menu a:active{transform:scale(0.97)}
 
 /* hero — full-bleed cinematic (viewport-bounded, no aspect-ratio to avoid min-width forcing overflow) */
-.hero{position:relative;display:flex;flex-direction:column;justify-content:center;padding:clamp(72px,11vh,104px) 0 76px;overflow:hidden;min-height:min(82vh, 660px);height:auto}
+.hero{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(110px,20vh,170px) 0 60px;overflow:hidden;min-height:min(100vh, 760px);height:auto}
 @media(max-width:720px){
-  .hero{justify-content:center;padding:64px 0 72px;min-height:min(78vh, 560px);height:auto}
+  .hero{justify-content:flex-end;padding:96px 0 48px;min-height:min(94vh, 700px);height:auto}
 }
 .hero-bg{position:absolute;inset:0;z-index:0;background:var(--shade)}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:grayscale(.08) sepia(.08) brightness(.92) contrast(1.06)}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 10%;filter:grayscale(.08) sepia(.08) brightness(.92) contrast(1.06)}
 /* slow cinematic ken-burns on the hero photo (delight, first-time; disabled under reduced-motion) */
 @keyframes jbKenBurns{from{transform:scale(1.08)}to{transform:scale(1)}}
 html.js .hero-bg img{animation:jbKenBurns 2.4s var(--ease) both}
-/* scrim — darkens the RIGHT column (where the text sits) and the bottom; keeps the face on the left visible */
-.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top, var(--bg) 0%, transparent 34%),linear-gradient(to left, rgba(15,11,7,.62) 0%, rgba(15,11,7,.28) 45%, transparent 78%)}
+/* scrim — dark bottom band behind the text strip; keeps the photo/face above it visible */
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top, var(--bg) 4%, rgba(15,11,7,.85) 34%, rgba(15,11,7,.25) 68%, transparent 90%)}
 .hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;max-width:1120px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,72px);min-width:0}
 @media(min-width:721px){ .hero-inner{align-items:flex-end;text-align:right} }
 /* allow hero text to wrap/shrink so it never forces the section wider than the viewport */
@@ -166,7 +166,7 @@ html.js .hero-bg img{animation:jbKenBurns 2.4s var(--ease) both}
 @media(max-width:720px){
   .hero-inner{align-items:flex-end;text-align:right}
   .hero-sub{margin-left:auto}
-  .hero::after{background:linear-gradient(to top, var(--bg) 0%, transparent 34%),linear-gradient(to left, rgba(15,11,7,.7) 0%, rgba(15,11,7,.32) 55%, transparent 85%)}
+  .hero::after{background:linear-gradient(to top, var(--bg) 4%, rgba(15,11,7,.85) 40%, rgba(15,11,7,.3) 74%, transparent 94%)}
   .hero-title{max-width:76%}
   .hero-sub{max-width:76%}
   .cta-row{max-width:100%}
