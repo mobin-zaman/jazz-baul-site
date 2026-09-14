@@ -81,7 +81,7 @@ html[data-theme="light"] .toggle .sun{display:inline}
 /* hero — full-bleed cinematic */
 .hero{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:calc(92vh - var(--nav-h));padding:0;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0;background:var(--shade)}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:grayscale(.25) sepia(.22) brightness(.68) contrast(1.06)}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:grayscale(.2) sepia(.18) brightness(.66) contrast(1.08)}
 /* gradient scrim so text stays readable over the photo */
 .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top, var(--bg) 0%, transparent 26%),linear-gradient(to right, rgba(20,16,12,.72), transparent 55%)}
 .hero-inner{position:relative;z-index:2;padding:120px 24px 84px;max-width:1120px;margin:0 auto;width:100%}
@@ -185,7 +185,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
 <main>
   <!-- HERO (full-bleed cinematic) -->
   <section class="hero" id="top">
-    <div class="hero-bg" aria-hidden="true"><img src="assets/studio-mic-large.jpg" alt="" loading="eager"></div>
+    <div class="hero-bg" aria-hidden="true"><img src="assets/akram-studio.jpg" alt="" loading="eager"></div>
     <div class="hero-inner">
       <img class="hero-logo reveal" src="assets/logo.jpg" alt="Jazz Baul Records" width="2000" height="2000" loading="eager">
       <p class="kicker reveal" style="transition-delay:40ms">Jazz Baul Records · Dhaka · Est. 2018</p>
