@@ -57,7 +57,8 @@ section{padding:110px 0}
 /* nav */
 .nav{position:sticky;top:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 28px;max-width:1120px;margin:0 auto;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{width:auto;height:34px;object-fit:contain;border-radius:4px;filter:sepia(.12) saturate(.8)}
+/* nav logo: crop to the horizontal 'JAZZ BAUL RECORDS' wordmark band so it's legible */
+.brand img{width:auto;height:44px;aspect-ratio:auto;object-fit:contain;object-position:left center;border-radius:4px;filter:sepia(.12) saturate(.8)}
 .brand-mark{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.08em;color:var(--ink)}
 .nav-links{display:flex;align-items:center;gap:30px;font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 .nav-links a{color:var(--ink-faint)}.nav-links a:hover{color:var(--ink)}
@@ -78,14 +79,18 @@ html[data-theme="light"] .toggle .sun{display:inline}
 .menu a{padding:16px 4px;font-family:var(--sans);font-size:20px;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--line);color:var(--ink)}
 .menu a:active{transform:scale(0.97)}
 
-/* hero — full-bleed cinematic */
-.hero{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden;min-height:60vh;aspect-ratio:16/8.5;max-height:88vh}
-@media(max-width:720px){ .hero{min-height:78vw;aspect-ratio:16/10} }
+/* hero — full-bleed cinematic (viewport-bounded, no aspect-ratio to avoid min-width forcing overflow) */
+.hero{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden;min-height:min(88vh, 680px);height:min(88vh, 640px)}
+@media(max-width:720px){ .hero{height:min(72vh, 460px);min-height:320px} }
 .hero-bg{position:absolute;inset:0;z-index:0;background:var(--shade)}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 28%;filter:grayscale(.12) sepia(.12) brightness(.9) contrast(1.05)}
 /* lighter scrim — keeps headline readable on the bottom-left while letting the photo show */
 .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top, var(--bg) 0%, transparent 30%),linear-gradient(to right, rgba(15,11,7,.55), transparent 42%)}
-.hero-inner{position:relative;z-index:2;padding:120px 24px 84px;max-width:1120px;margin:0 auto;width:100%}
+.hero-inner{position:relative;z-index:2;padding:120px 24px 84px;max-width:1120px;margin:0 auto;width:100%;max-width:100%;min-width:0}
+/* allow hero text to wrap/shrink so it never forces the section wider than the viewport */
+.hero-inner>*{min-width:0;max-width:100%}
+.hero-title,.hero-sub,.kicker{overflow-wrap:anywhere}
+.cta-row{flex-wrap:wrap}
 .hero .kicker{color:var(--accent);margin-bottom:20px}
 .hero-title{margin:0}
 .hero-logo{width:clamp(120px,16vw,200px);height:auto;margin-bottom:26px;border-radius:10px;border:1px solid var(--line);filter:sepia(.15) saturate(.75) contrast(1.05);box-shadow:0 8px 30px var(--shade)}
