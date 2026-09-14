@@ -34,10 +34,6 @@ document.documentElement.classList.add('js');
   --sans:'Canva Sans','Futura','Century Gothic','Segoe UI',system-ui,'Noto Sans Bengali',sans-serif;
   color-scheme:dark;
 }
-html[data-theme="light"]{
-  --bg:#f2ece3; --bg-raise:#fffdf8; --ink:#2a241e; --ink-dim:#4a4035; --ink-faint:#6f6253;
-  --accent:#8a6b45; --line:rgba(42,36,30,.18); --shade:rgba(0,0,0,.10); color-scheme:light;
-}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px)}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background 320ms var(--ease),color 320ms var(--ease)}
@@ -46,7 +42,7 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 h1,h2,h3{font-family:var(--display)}
 /* Editorial display: heavy all-caps, tight tracking (Sackers Gothic-esque) */
 .display{font-weight:800;text-transform:uppercase;line-height:1.02;letter-spacing:.02em}
-.hero-title{font-size:clamp(44px,9vw,104px);letter-spacing:.02em}
+.hero-title{font-size:clamp(36px,6.2vw,84px);letter-spacing:.02em}
 h2{font-family:var(--display);font-size:clamp(30px,5vw,54px);text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
 .eyebrow,.label,.kicker{text-transform:uppercase;letter-spacing:.26em;font-size:11px;color:var(--accent);font-family:var(--sans)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
@@ -63,12 +59,6 @@ section{padding:110px 0}
 .nav-links{display:flex;align-items:center;gap:30px;font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 .nav-links a{color:var(--ink-faint)}.nav-links a:hover{color:var(--ink)}
 .nav-right{display:flex;align-items:center;gap:14px}
-.toggle{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center;font-size:18px;transition:transform 160ms var(--ease),border-color 240ms var(--ease)}
-.toggle:active{transform:scale(0.9)}
-.toggle .sun,.toggle .moon{line-height:1;display:none}
-.toggle .moon{display:inline}
-html[data-theme="light"] .toggle .moon{display:none}
-html[data-theme="light"] .toggle .sun{display:inline}
 .burger{display:none;width:48px;height:48px;background:none;border:0;cursor:pointer;flex-direction:column;justify-content:center;gap:6px;align-items:center}
 .burger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform 220ms var(--ease),opacity 220ms var(--ease)}
 .menu-open .burger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
@@ -80,25 +70,27 @@ html[data-theme="light"] .toggle .sun{display:inline}
 .menu a:active{transform:scale(0.97)}
 
 /* hero — full-bleed cinematic (viewport-bounded, no aspect-ratio to avoid min-width forcing overflow) */
-.hero{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden;min-height:min(88vh, 680px);height:min(88vh, 640px)}
-@media(max-width:720px){ .hero{height:min(72vh, 460px);min-height:320px} }
+.hero{position:relative;display:flex;flex-direction:column;justify-content:center;padding:clamp(72px,11vh,104px) 0 76px;overflow:hidden;min-height:min(82vh, 660px);height:auto}
+@media(max-width:720px){
+  .hero{justify-content:center;padding:64px 0 72px;min-height:min(78vh, 560px);height:auto}
+}
 .hero-bg{position:absolute;inset:0;z-index:0;background:var(--shade)}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 28%;filter:grayscale(.12) sepia(.12) brightness(.9) contrast(1.05)}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:grayscale(.08) sepia(.08) brightness(.92) contrast(1.06)}
 /* slow cinematic ken-burns on the hero photo (delight, first-time; disabled under reduced-motion) */
 @keyframes jbKenBurns{from{transform:scale(1.08)}to{transform:scale(1)}}
 html.js .hero-bg img{animation:jbKenBurns 2.4s var(--ease) both}
-/* lighter scrim — keeps headline readable on the bottom-left while letting the photo show */
-.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top, var(--bg) 0%, transparent 30%),linear-gradient(to right, rgba(15,11,7,.55), transparent 42%)}
-.hero-inner{position:relative;z-index:2;padding:120px 24px 84px;max-width:1120px;margin:0 auto;width:100%;max-width:100%;min-width:0}
+/* scrim — darkens the RIGHT column (where the text sits) and the bottom; keeps the face on the left visible */
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top, var(--bg) 0%, transparent 34%),linear-gradient(to left, rgba(15,11,7,.62) 0%, rgba(15,11,7,.28) 45%, transparent 78%)}
+.hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;max-width:1120px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,72px);min-width:0}
+@media(min-width:721px){ .hero-inner{align-items:flex-end;text-align:right} }
 /* allow hero text to wrap/shrink so it never forces the section wider than the viewport */
 .hero-inner>*{min-width:0;max-width:100%}
 .hero-title,.hero-sub,.kicker{overflow-wrap:anywhere}
 .cta-row{flex-wrap:wrap}
 .hero .kicker{color:var(--accent);margin-bottom:20px}
 .hero-title{margin:0}
-.hero-logo{width:clamp(120px,16vw,200px);height:auto;margin-bottom:26px;border-radius:10px;border:1px solid var(--line);filter:sepia(.15) saturate(.75) contrast(1.05);box-shadow:0 8px 30px var(--shade)}
-.hero-sub{font-size:clamp(16px,2.4vw,21px);color:var(--ink-dim);margin-top:24px;max-width:50ch;line-height:1.55}
-.hero-sub em{color:var(--ink);font-style:normal}
+.hero-sub{font-size:clamp(16px,2.4vw,21px);color:var(--ink-dim);margin-top:24px;max-width:46ch;line-height:1.55;margin-left:auto}
+@media(max-width:720px){ .hero-sub{margin-left:0} }
 .cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:44px;align-items:center}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 32px;border-radius:var(--radius);font-family:var(--sans);font-weight:600;letter-spacing:.1em;font-size:12px;text-transform:uppercase;cursor:pointer;background:var(--accent);color:#1c150d;border:1px solid transparent;transition:transform 160ms var(--ease),background 240ms var(--ease),color 240ms var(--ease),border-color 240ms var(--ease)}
 .btn:active{transform:scale(0.97)}
@@ -171,7 +163,15 @@ html.js .hero-bg img{animation:jbKenBurns 2.4s var(--ease) both}
 /* responsive */
 @media(min-width:720px){ .nav-links{display:flex}.burger{display:none}.svc-grid{grid-template-columns:repeat(3,1fr)}.disco-grid.two{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr 1.1fr;gap:72px}.about-photo{max-width:440px} }
 @media(max-width:719px){ .nav-links{display:none}.burger{display:flex} }
-@media(max-width:540px){ section{padding:76px 0}.hero-title{font-size:clamp(34px,12vw,54px)}.hero-inner{padding:90px 24px 70px}.disco-grid.two{gap:24px}.vcard{background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.video-wrap{border-radius:6px}.cta-row .btn{flex:1 1 100%;justify-content:center}.contact-box{padding:26px}.svc{padding:26px 22px} }
+@media(max-width:720px){
+  .hero-inner{align-items:flex-end;text-align:right}
+  .hero-sub{margin-left:auto}
+  .hero::after{background:linear-gradient(to top, var(--bg) 0%, transparent 34%),linear-gradient(to left, rgba(15,11,7,.7) 0%, rgba(15,11,7,.32) 55%, transparent 85%)}
+  .hero-title{max-width:76%}
+  .hero-sub{max-width:76%}
+  .cta-row{max-width:100%}
+}
+@media(max-width:540px){ section{padding:76px 0}.hero-title{font-size:clamp(30px,11vw,48px)}.hero-inner{padding:80px 24px 64px}.hero-bg img{object-position:center 6%}.disco-grid.two{gap:24px}.vcard{background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.video-wrap{border-radius:6px}.cta-row .btn{flex:1 1 100%;justify-content:center}.contact-box{padding:26px}.svc{padding:26px 22px} }
 
 /* reveals */
 .reveal{opacity:1}
@@ -194,7 +194,6 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
     <a href="#contact">Contact</a>
   </nav>
   <div class="nav-right">
-    <button class="toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false"><span class="moon" aria-hidden="true">☾</span><span class="sun" aria-hidden="true">☀</span></button>
     <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -213,7 +212,6 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
   <section class="hero" id="top">
     <div class="hero-bg" aria-hidden="true"><img src="assets/akram-hero.jpg" alt="" loading="eager"></div>
     <div class="hero-inner">
-      <img class="hero-logo reveal" src="assets/logo.jpg" alt="Jazz Baul Records" width="2000" height="2000" loading="eager">
       <p class="kicker reveal" style="transition-delay:40ms">Jazz Baul Records · Dhaka · Est. 2018</p>
       <h1 class="display hero-title reveal" style="transition-delay:80ms">A recording studio<br>for serious sound</h1>
       <p class="hero-sub reveal" style="transition-delay:140ms">Recording · Music Production · Sound Design · Mixing &amp; Mastering — for music, film, animation, games and brands.</p>
@@ -289,8 +287,7 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
       <div class="section-head reveal"><span class="eyebrow">The studio</span><h2>About</h2></div>
       <div class="about-grid">
         <div class="about-photos reveal">
-        <figure class="about-photo"><img src="assets/studio-mic.jpg" alt="Inside the Jazz Baul Records studio" width="990" height="1344" loading="eager"></figure>
-        <figure class="about-photo small"><img src="assets/studio-guitarist.jpg" alt="A guitarist recording session at Jazz Baul Records" width="720" height="720" loading="eager"></figure>
+        <figure class="about-photo"><img src="assets/studio-guitarist.jpg" alt="A guitarist recording session at Jazz Baul Records" width="720" height="720" loading="eager"></figure>
       </div>
         <div>
         <div class="studio-bio reveal" style="transition-delay:60ms">
@@ -351,15 +348,6 @@ html.js .reveal.is-visible{opacity:1;transform:none;transition:opacity 760ms var
 <script>
 (function(){
   'use strict';
-  var root=document.documentElement, STORE_KEY='jazzbaul-eo-theme', stored=null;
-  try{stored=localStorage.getItem(STORE_KEY);}catch(e){}
-  var theme=stored || 'dark';   /* warm-dark by default, like English Oak */
-  if(theme==='light'){root.setAttribute('data-theme','light');}else{root.removeAttribute('data-theme');}
-  var toggles=document.querySelectorAll('#themeToggle, #themeToggleMobile');
-  function setTheme(t){ if(t==='light'){root.setAttribute('data-theme','light');}else{root.removeAttribute('data-theme');} try{localStorage.setItem(STORE_KEY,t);}catch(e){} toggles.forEach(function(b){b.setAttribute('aria-pressed',t==='light'?'true':'false');}); }
-  toggles.forEach(function(b){ b.addEventListener('click',function(){ var cur=root.hasAttribute('data-theme')?'light':'dark'; setTheme(cur==='light'?'dark':'light'); }); });
-  toggles.forEach(function(b){ b.setAttribute('aria-pressed',theme==='light'?'true':'false'); });
-
   var burger=document.querySelector('.burger'), menu=document.getElementById('menu'), body=document.body;
   function setMenu(o){ body.classList.toggle('menu-open',o); if(burger){burger.setAttribute('aria-expanded',o?'true':'false');} }
   if(burger){ burger.addEventListener('click',function(){setMenu(!body.classList.contains('menu-open'));}); menu.addEventListener('click',function(e){if(e.target.tagName==='A'){setMenu(false);}}); window.addEventListener('keydown',function(e){if(e.key==='Escape'){setMenu(false);}}); }
